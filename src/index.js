@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import HookTrainApp from './HookTrain/HookTrain';
+
+export const ConfigContext = React.createContext();
+
+const configValue = {
+  title: 'easy peasy'
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <ConfigContext.Provider value={configValue}>
+      <App />
+    </ConfigContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
