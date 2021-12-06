@@ -3,19 +3,22 @@ import {
     Container,
     TextField,
     MenuItem,
-    Paper,
     Select,
     Stack,
     Typography,
     InputLabel,
-    FormControl
+    FormControl,
+    FormLabel,
+    RadioGroup,
+    FormControlLabel,
+    Radio
 } from "@mui/material";
-import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import '../../style.css'
 import { Error } from "./Elements";
 import SendIcon from '@mui/icons-material/Send';
 import CSS from 'csstype';
+import { useEffect } from "react";
 
 enum GenderEnum {
     female = "female",
@@ -23,25 +26,20 @@ enum GenderEnum {
     other = "other"
 }
 
+enum PetEnum {
+    dog = 'dog',
+    cat = 'cat',
+    kangaroo = 'kangaroo'
+}
+
 type TextFields = {
     firsteName: string,
     lastName: string,
     gender: GenderEnum,
+    bestPet: PetEnum,
     age: number
 }
 
-type validator = {
-    required: boolean,
-    min: number,
-    max: number,
-    minLength: number,
-    maxLength: number,
-    pattern: string,
-
-}
-const register = {
-
-}
 
 const style: CSS.Properties = {
     margin: '10px 20px 20px 0px'
@@ -54,12 +52,12 @@ const FormWithUseForm = () => {
     const submitClicked = (e: any) => {
         alert(errors.age?.message);
         e.preventDefault();
-
     }
 
+
     return (
-        <Container>
-            <Typography variant="h6">A form with useForm hook</Typography>
+        <Container >
+            <Typography variant="h6" sx={style}>A form with useForm hook</Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Stack sx={style}>
                     <TextField
@@ -67,6 +65,7 @@ const FormWithUseForm = () => {
                         id='firstName'
                         label='First name'
                         {...register("firsteName")}
+                        required
                     />
 
                     <TextField
@@ -82,13 +81,22 @@ const FormWithUseForm = () => {
                         <Select
                             id='gender'
                             labelId="select-label"
-
                             {...register("gender")}
                             sx={style}>
-                            <MenuItem value="female">female</MenuItem>
-                            <MenuItem value="male">male</MenuItem>
-                            <MenuItem value="other">other</MenuItem>
+                            {Object.values(GenderEnum).map(g => <MenuItem key={g} value={g}>{g}</MenuItem>)}
                         </Select>
+                    </FormControl>
+
+                    <FormControl fullWidth>
+                        <FormLabel>Best Pet</FormLabel>
+                        <RadioGroup
+                            sx={style}
+                            row
+                            id='bestPet'>
+                            {Object.values(PetEnum).map(pet =>
+                                <FormControlLabel {...register("bestPet")} key={pet} value={pet} control={<Radio />} label={pet} />
+                            )}
+                        </RadioGroup>
                     </FormControl>
 
                     <TextField
@@ -107,10 +115,12 @@ const FormWithUseForm = () => {
                     {errors.age && <Error>{errors.age.message}</Error>}
 
                     <Button
+                        sx={style}
                         type="submit"
                         endIcon={<SendIcon />}
-                        variant='dashed'
-                        onClick={e => submitClicked(e)}>
+                        variant='contained'
+                    //onClick={e => submitClicked(e)}
+                    >
                         Submit
                     </Button>
                 </Stack>

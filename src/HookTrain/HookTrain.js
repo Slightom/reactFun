@@ -2,12 +2,12 @@ import { useEffect, useState, useRef, useContext } from 'react';
 import { keyframes } from 'styled-components';
 import { ConfigContext } from '..';
 import styled from 'styled-components'
-import { Button, Divv } from './Elements';
 import * as loginApi from '../api/loginApi';
 import * as formsApi from '../api/formsApi';
 import * as seniorsApi from '../api/seniorsApi';
-import { setUserAndTokenData } from '../Common/Helper';
+import { setUserAndTokenData } from '../common/Helper';
 import { Link as L } from 'react-router-dom'
+import { Button, Divv } from './Elements';
 
 const deegree = 0.5;
 // Create the keyframes

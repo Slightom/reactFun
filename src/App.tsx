@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import HookTrainApp from './HookTrain/HookTrain';
+import HookTrainApp from './hookTrain/HookTrain';
 import FormTrain from './components/FormTrain/FormTrain';
 import NoFound from './components/FormTrain/NoFound/NoFound';
 import { GlobalSettingsProvider } from './context/GlobalSettings.context';
@@ -9,6 +9,7 @@ import Navbar from './components/navbar/Navbar';
 import ImageCard from './components/mui/ImageCard';
 import { ThemeProvider } from '@mui/material';
 import { customTheme } from './assets/Themes';
+import Layout from './components/Layout';
 
 const App = () => {
 
@@ -17,15 +18,17 @@ const App = () => {
     <Router>
       <GlobalSettingsProvider>
         <ThemeProvider theme={customTheme}>
-          <Navbar />
-          <Switch>
-            <Route exact path='/' component={HookTrainApp} />
-            <Route path='/formtrain' component={FormTrain} />
-            <Route path='/counter' component={Counter} />
-            <Route path='/useForm' component={FormWithUseForm} />
-            <Route path='/mui' component={ImageCard} />
-            <Route component={NoFound} />
-          </Switch>
+          <Layout>
+            <Navbar />
+            <Switch>
+              <Route exact path='/' component={HookTrainApp} />
+              <Route path='/formtrain' component={FormTrain} />
+              <Route path='/counter' component={Counter} />
+              <Route path='/useForm' component={FormWithUseForm} />
+              <Route path='/mui' component={ImageCard} />
+              <Route component={NoFound} />
+            </Switch>
+          </Layout>
         </ThemeProvider>
       </GlobalSettingsProvider>
     </Router>

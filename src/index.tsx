@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import HookTrainApp from './HookTrain/HookTrain';
+import HookTrainApp from './hookTrain/HookTrain';
 
 export const ConfigContext = React.createContext();
 

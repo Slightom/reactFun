@@ -34,9 +34,17 @@ export const customTheme: ThemeOptions = createTheme({
                     style: {
                         textTransform: 'none',
                         border: `2px dashed ${primaryColor[500]}`,
+                        backgroundColor: primaryColor[500]
                     },
                 },
             ]
+        },
+        MuiAppBar: {
+            styleOverrides: {
+                root: {
+                    marginBottom: 20
+                }
+            }
         }
     },
     typography: {

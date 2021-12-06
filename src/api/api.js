@@ -1,4 +1,4 @@
-import { generateHeaders } from "../Common/Helper"
+import { generateHeaders } from "../common/Helper"
 
 const apiCall = (url, method, body = null, resolve, reject, authenticate = false) =>
     fetch(url, {

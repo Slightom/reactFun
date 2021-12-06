@@ -1,10 +1,10 @@
 import { Formik } from 'formik';
 import { useEffect, useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '../../HookTrain/Elements';
+import { Button } from '../../hookTrain/Elements';
 import * as loginApi from '../../api/loginApi';
 import * as seniorsApi from '../../api/seniorsApi';
-import { setUserAndTokenData } from '../../Common/Helper';
+import { setUserAndTokenData } from '../../common/Helper';
 import { GlobalSettingsConsumer } from '../../context/GlobalSettings.context';
 
 
